@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    ul,
+    ol,
+    li {
+        list-style: none;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    .ul1 {
+        border-bottom: 3px solid #ac8036;
+    }
+
+    .ul1::after {
+        display: block;
+        clear: both;
+        content: "";
+    }
+
+    .ul1>li {
+        float: left;
+        line-height: 50px;
+
+        /* 给一级li标签添加定位属性,作为二级ul的定位对象 */
+        position: relative;
+    }
+
+    /* 如果改变第一层元素的属性,第二层ul>li中因为是子级元素,也会继承改变的样式效果,如果需要继续维持之前的样式效果,必须也添加鼠标经过时的样式 */
+
+    /* .ul1>li:hover {
+            color: red;
+        }
+
+        .ul1>li:hover>ul {
+            color: black;
+        } 
+    */
+
+
+    .ul1>li>a {
+        display: block;
+        width: 80px;
+        height: 50px;
+        text-align: center;
+        color: black;
+    }
+
+    .ul1>li:hover>a {
+        color: red;
+    }
+
+    .ul1>li>ul {
+        /* ul整体消失出现,display: none; 添加给ul 
+           ul消失时不占位,需要使用 display: none;方式消失
+        */
+        display: none;
+
+        /* 元素出现时不占位,必须添加绝对定位属性 */
+        position: absolute;
+
+        /* absolute定位的元素,脱离文档流占位,只具有内容的宽度以及高度,必须添加宽度属性 */
+        width: 80px;
+
+        /* 文字内容居中显示 */
+        text-align: center;
+
+        /* 如果添加定位距离,不能过长
+           如果出现间隙,会影响显示效果
+         */
+        top: 50px;
+    }
+
+    /* 鼠标经过一级li,二级ul显示 */
+    .ul1>li:hover>ul {
+        display: block;
+    }
+    </style>
+</head>
+
+<body>
+    <ul class="ul1">
+        <li><a href="#">首页</a></li>
+        <li><a href="#">酒店</a></li>
+        <li>
+            <a href="#">出行</a>
+            <ul>
+                <li>机票</li>
+                <li>火车票</li>
+                <li>汽车票</li>
+            </ul>
+        </li>
+        <li><a href="#">电影</a></li>
+        <li><a href="#">结婚</a></li>
+        <li><a href="#">外卖</a></li>
+    </ul>
+</body>
+
+</html>
